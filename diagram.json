@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "MSU-IIT Student",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-stm32-bluepill", "id": "stm32", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht22", "top": -260, "left": -220, "attrs": {} },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": -260, "left": 140, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled", "top": -260, "left": 320, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": 240, "left": -220, "attrs": {} },
+    { "type": "wokwi-ky-040", "id": "encoder", "top": 240, "left": 120, "attrs": {} },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 240, "left": 300, "attrs": {} }
+  ],
+  "connections": [
+    [ "stm32:G.1", "dht22:GND", "black", [ "v0" ] ],
+    [ "stm32:3.3.1", "dht22:VCC", "red", [ "v0" ] ],
+    [ "stm32:A1", "dht22:SDA", "green", [ "v0" ] ],
+
+    [ "stm32:G.1", "ldr:GND", "black", [ "v0" ] ],
+    [ "stm32:3.3.1", "ldr:VCC", "red", [ "v0" ] ],
+    [ "stm32:A0", "ldr:AO", "blue", [ "v0" ] ],
+
+    [ "stm32:G.2", "pir:GND", "black", [ "v0" ] ],
+    [ "stm32:5V", "pir:VCC", "red", [ "v0" ] ],
+    [ "stm32:A2", "pir:OUT", "purple", [ "v0" ] ],
+
+    [ "stm32:G.2", "encoder:GND", "black", [ "v0" ] ],
+    [ "stm32:3.3.2", "encoder:VCC", "red", [ "v0" ] ],
+    [ "stm32:A3", "encoder:CLK", "orange", [ "v0" ] ],
+    [ "stm32:A4", "encoder:DT", "yellow", [ "v0" ] ],
+
+    [ "stm32:G.1", "oled:GND", "black", [ "v0" ] ],
+    [ "stm32:3.3.1", "oled:VCC", "red", [ "v0" ] ],
+    [ "stm32:B6", "oled:SCL", "cyan", [ "v0" ] ],
+    [ "stm32:B7", "oled:SDA", "blue", [ "v0" ] ],
+
+    [ "stm32:G.2", "buzzer:1", "black", [ "v0" ] ],
+    [ "stm32:A8", "buzzer:2", "red", [ "v0" ] ]
+  ]
+}
